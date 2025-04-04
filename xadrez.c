@@ -1,41 +1,58 @@
 #include <stdio.h>
+    
+    void moverTorre(int casas){ //Função recursiva para movimento da Torre.
+        if (casas > 0){ //Condição para repetição recursiva.
+            moverTorre(casas -1); //Chama a si mesma com n - 1
+            printf("%d - Direita\n", casas); //Imprime o valor autal da sequencia do movimento seguido de sua direção.
+        }
+    }
+    
+    void moverBispo(int casas){ //Função recursiva para movimento do Bispo.
+        if (casas > 0){ //Condição para repetição recursiva.
+            int movimentoBispo = 1, Bispo; //Declaração de variévais dos movimentos do Bispo.
+            while (movimentoBispo <= 5) //Estrutura (externa) de repetição aninhada para movimento do Bispo.
+            {
+                printf("%d - Cima\n", movimentoBispo); //Imprime o valor autal da sequencia do movimento seguido de sua direção (vertical).      
+                for (Bispo = 1; Bispo < 2 ; Bispo++) //Estrutura (interna) de repetição aninhada para movimento do Bispo.
+                {
+                    printf("%d - Direita\n", movimentoBispo);//Imprime o valor autal da sequencia do movimento seguido de sua direção (horizontal). 
+                }
+                movimentoBispo++; //Incrementando variavel para limitar a condição da estrutura de repetição externa.
+            }
+        }
+    }
+    
+    void moverRainha(int casas){//Função recursiva para movimento da Rainha.
+        if (casas > 0){ //Condição para repetição recursiva.
+            moverRainha(casas -1); //Chama a si mesma com n - 1
+            printf("%d - Esquerda\n", casas); //Imprime o valor autal da sequencia do movimento seguido de sua direção.
+        }
+    }
 
     int main(){
-        // Declaração de variáveis 
-        int movimentoTorre;
-        int movimentoBispo = 1;
-        int movimentoRainha = 1;
+        //Declaração de variáveis do Cavalo
         int movimentoCavalo = 3;
         int entradaCavalo;
 
+    //Entrada do jogo
     printf("#######################  Jogo de Xadrez ###################### \n");
+    
     //Movimento da torre
     printf("#####################  Movimento da Torre #################### \n\n");
-   
-    for (movimentoTorre = 1; movimentoTorre <= 5; movimentoTorre++) //Estrutura de repetição for para imprimir o movimento da torre.
-    {
-        printf("%d - Direita\n", movimentoTorre);
-    }
+    moverTorre(5); //Chamada recursiva para imprimir o movimento da Torre.
+    printf("\n");
 
-    printf("\n");//Movimento do bispo
+    //Movimento do bispo
     printf("#####################  Movimento do Bispo #################### \n\n");
-    
-    while (movimentoBispo <= 5) //Estrutura de repetição While para imprimir o movimento do Bispo.
-    {
-        printf("%d - Cima, Direita\n", movimentoBispo);
-        movimentoBispo++;
-    }
+    moverBispo(5); //Chamada recursiva para imprimir o movimento do Bispo.
+    printf("\n");
 
-    printf("\n");//Movimento da Rainha
+    //Movimento da Rainha
     printf("####################  Movimento da Rainha #################### \n\n");
-    
-    do
-    {
-        printf("%d - Esquerda\n", movimentoRainha);
-        movimentoRainha++;
-    } while (movimentoRainha <= 8);// Estrutura de repetição para imprimir o movimento da Rainha.
-    
-    printf("\n"); //Menu para entra da dados do movimento do cavalo.
+    moverRainha(8); //Chamada recursiva para imprimir o movimento da Rainha.
+    printf("\n");
+
+    //Menu para entra da dados do movimento do cavalo.
     printf("####################  Movimento do Cavalo #################### \n\n");
     printf("Escolha o movimento do cavalo:\n\n");
     printf("N°1 - Cima, cima e direita.\n");
@@ -53,107 +70,107 @@
     //Estrutura de decisão para executar o lopping de acordo com a escolha do usuário.
     switch (entradaCavalo) 
     {
-    case 1:// Estruruta de repetição aninhada para executar o movimento do cavalo.
+    case 1:
     printf("Execução do movimento:\n\n");
-    while (movimentoCavalo <= 3)
+    while (movimentoCavalo <= 3) //Estruruta (externa) de repetição aninhada para executar o movimento do cavalo.
     {
-        for (int i = 1; i < 3; i++)
+        for (int i = 1, j = 5; i != j; i++, j--) //Estrutura (interna) de repetição com multiplas variáveis e condições para movimento do Cavalo.
         {
-            printf("%d - Cima\n", i);
+            printf("%d - Cima\n", i); //Imprime o valor autal da sequencia do movimento seguido de sua direção.
         }
-        printf("%d - Direita\n", movimentoCavalo);
-        movimentoCavalo++;
+        printf("%d - Direita\n", movimentoCavalo); //Imprime o valor autal da sequencia do movimento seguido de sua direção.
+        movimentoCavalo++; //Incrementando variavel para limitar a condição da estrutura de repetição externa.
     }
         break;
     
-    case 2:// Estruruta de repetição aninhada para executar o movimento do cavalo.
+    case 2:
     printf("Execução do movimento:\n\n");
-    while (movimentoCavalo <= 3)
+    while (movimentoCavalo <= 3) //Estruruta (externa) de repetição aninhada para executar o movimento do cavalo.
     {
-        for (int i = 1; i < 3; i++)
+        for (int i = 1, j = 5; i != j; i++, j--) //Estrutura (interna) de repetição com multiplas variáveis e condições para movimento do Cavalo.
         {
-            printf("%d - Cima\n", i);
+            printf("%d - Cima\n", i); //Imprime o valor autal da sequencia do movimento seguido de sua direção.
         }
-        printf("%d - Esquerda\n", movimentoCavalo);
-        movimentoCavalo++;
+        printf("%d - Esquerda\n", movimentoCavalo); //Imprime o valor autal da sequencia do movimento seguido de sua direção.
+        movimentoCavalo++; //Incrementando variavel para limitar a condição da estrutura de repetição externa.
     }
     break;
 
-    case 3:// Estruruta de repetição aninhada para executar o movimento do cavalo.
+    case 3:
     printf("Execução do movimento:\n\n");
-    while (movimentoCavalo <= 3)
+    while (movimentoCavalo <= 3) //Estruruta (externa) de repetição aninhada para executar o movimento do cavalo.
     {
-        for (int i = 1; i < 3; i++)
+        for (int i = 1, j = 5; i != j; i++, j--) //Estrutura (interna) de repetição com multiplas variáveis e condições para movimento do Cavalo.
         {
-            printf("%d - Baixo\n", i);
+            printf("%d - Baixo\n", i); //Imprime o valor autal da sequencia do movimento seguido de sua direção.
         }
-        printf("%d - Direita\n", movimentoCavalo);
-        movimentoCavalo++;
+        printf("%d - Direita\n", movimentoCavalo); //Imprime o valor autal da sequencia do movimento seguido de sua direção.
+        movimentoCavalo++; //Incrementando variavel para limitar a condição da estrutura de repetição externa.
     }
     break;
 
-    case 4:// Estruruta de repetição aninhada para executar o movimento do cavalo.
+    case 4:
     printf("Execução do movimento:\n\n");
-    while (movimentoCavalo <= 3)
+    while (movimentoCavalo <= 3) //Estruruta (externa) de repetição aninhada para executar o movimento do cavalo.
     {
-        for (int i = 1; i < 3; i++)
+        for (int i = 1, j = 5; i != j; i++, j--) //Estrutura (interna) de repetição com multiplas variáveis e condições para movimento do Cavalo.
         {
-            printf("%d - Baixo\n", i);
+            printf("%d - Baixo\n", i); //Imprime o valor autal da sequencia do movimento seguido de sua direção.
         }
-        printf("%d - Esquerda\n", movimentoCavalo);
-        movimentoCavalo++;
+        printf("%d - Esquerda\n", movimentoCavalo); //Imprime o valor autal da sequencia do movimento seguido de sua direção.
+        movimentoCavalo++; //Incrementando variavel para limitar a condição da estrutura de repetição externa.
     }
     break;
 
-    case 5:// Estruruta de repetição aninhada para executar o movimento do cavalo.
+    case 5:
     printf("Execução do movimento:\n\n");
-    while (movimentoCavalo <= 3)
+    while (movimentoCavalo <= 3) //Estruruta (externa) de repetição aninhada para executar o movimento do cavalo.
     {
-        for (int i = 1; i < 3; i++)
+        for (int i = 1, j = 5; i != j; i++, j--) //Estrutura (interna) de repetição com multiplas variáveis e condições para movimento do Cavalo.
         {
-            printf("%d - Direita\n", i);
+            printf("%d - Direita\n", i); //Imprime o valor autal da sequencia do movimento seguido de sua direção.
         }
-        printf("%d - Cima\n", movimentoCavalo);
-        movimentoCavalo++;
+        printf("%d - Cima\n", movimentoCavalo); //Imprime o valor autal da sequencia do movimento seguido de sua direção.
+        movimentoCavalo++; //Incrementando variavel para limitar a condição da estrutura de repetição externa.
     }
     break;
 
-    case 6:// Estruruta de repetição aninhada para executar o movimento do cavalo.
+    case 6:
     printf("Execução do movimento:\n\n");
-    while (movimentoCavalo <= 3)
+    while (movimentoCavalo <= 3) //Estruruta (externa) de repetição aninhada para executar o movimento do cavalo.
     {
-        for (int i = 1; i < 3; i++)
+        for (int i = 1, j = 5; i != j; i++, j--) //Estrutura (interna) de repetição com multiplas variáveis e condições para movimento do Cavalo.
         {
-            printf("%d - Direita\n", i);
+            printf("%d - Direita\n", i); //Imprime o valor autal da sequencia do movimento seguido de sua direção.
         }
-        printf("%d - Baixo\n", movimentoCavalo);
-        movimentoCavalo++;
+        printf("%d - Baixo\n", movimentoCavalo); //Imprime o valor autal da sequencia do movimento seguido de sua direção.
+        movimentoCavalo++; //Incrementando variavel para limitar a condição da estrutura de repetição externa.
     }
     break;
 
-    case 7:// Estruruta de repetição aninhada para executar o movimento do cavalo.
+    case 7:
     printf("Execução do movimento:\n\n");
-    while (movimentoCavalo <= 3)
+    while (movimentoCavalo <= 3) //Estruruta (externa) de repetição aninhada para executar o movimento do cavalo.
     {
-        for (int i = 1; i < 3; i++)
+        for (int i = 1, j = 5; i != j; i++, j--) //Estrutura (interna) de repetição com multiplas variáveis e condições para movimento do Cavalo.
         {
-            printf("%d - Esquerda\n", i);
+            printf("%d - Esquerda\n", i); //Imprime o valor autal da sequencia do movimento seguido de sua direção.
         }
-        printf("%d - Cima\n", movimentoCavalo);
-        movimentoCavalo++;
+        printf("%d - Cima\n", movimentoCavalo); //Imprime o valor autal da sequencia do movimento seguido de sua direção.
+        movimentoCavalo++; //Incrementando variavel para limitar a condição da estrutura de repetição externa.
     }
     break;
 
-    case 8:// Estruruta de repetição aninhada para executar o movimento do cavalo.
+    case 8:
     printf("Execução do movimento:\n\n");
-    while (movimentoCavalo <= 3)
+    while (movimentoCavalo <= 3) //Estruruta (externa) de repetição aninhada para executar o movimento do cavalo.
     {
-        for (int i = 1; i < 3; i++)
+        for (int i = 1, j = 5; i != j; i++, j--) //Estrutura (interna) de repetição com multiplas variáveis e condições para movimento do Cavalo.
         {
-            printf("%d - Esquerda\n", i);
+            printf("%d - Esquerda\n", i); //Imprime o valor autal da sequencia do movimento seguido de sua direção.
         }
-        printf("%d - Baixo\n", movimentoCavalo);
-        movimentoCavalo++;
+        printf("%d - Baixo\n", movimentoCavalo); //Imprime o valor autal da sequencia do movimento seguido de sua direção.
+        movimentoCavalo++; //Incrementando variavel para limitar a condição da estrutura de repetição externa.
     }
     break;
 
